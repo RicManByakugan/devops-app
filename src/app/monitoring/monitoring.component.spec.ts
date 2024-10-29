@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MonitoringComponent } from './monitoring.component';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('MonitoringComponent', () => {
   let component: MonitoringComponent;
@@ -8,7 +10,16 @@ describe('MonitoringComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MonitoringComponent]
+      imports: [MonitoringComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({ id: 1 }),
+            data: of({})
+          }
+        }
+      ]
     })
     .compileComponents();
 
